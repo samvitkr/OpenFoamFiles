@@ -1,0 +1,42 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      mapFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+mapFieldsCoeffs
+{
+    T     // Field to be mapped (e.g., temperature)
+    {
+        mappingMethod       cellToPoint;  // Specify the mapping method
+        cellToPointCoeffs
+        {
+            mapMethod       faceArea;     // Mapping method coefficients
+        }
+    }
+}
+
+patchMap       
+(
+movingWall movingWall
+in	in
+out 	out
+front	front
+back 	back
+);
+
+cuttingPatches  ();
+
+
+// ************************************************************************* //
